@@ -44,12 +44,23 @@ const VehicleMaintenance = () => {
         <div className="filter-buttons">
           <select className="filter-select">
             <option>Vehicle Category</option>
+            <option>Suv</option>
+            <option>Economy</option>
+            <option>Mini</option>
+ 
           </select>
           <select className="filter-select">
             <option>Task</option>
+            <option>Oil Change</option>
+            <option>Tyre Change</option>
+            <option>Service</option>
           </select>
           <select className="filter-select">
-            <option>Status</option>
+          <option>Status</option>
+            <option>Done</option>
+            <option>Due </option>
+            <option>Overdue</option>
+            <option>Today</option>
           </select>
           <select className="filter-select">
             <option>Scheduled</option>
