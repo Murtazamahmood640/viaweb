@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./AdminEdit.css";
-import profile from "../../Assets/SidebarDropdownIcons/user.png"
+/*import profile from "../../Assets/SidebarDropdownIcons/user.png"*/
 
 const EditProfile = () => {
+  const [selectedImage, setSelectedImage] = useState(null);
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: "Shaeroniya",
     role: "Admin",
@@ -18,10 +21,29 @@ const EditProfile = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setSelectedImage(reader.result); // Save image data URL locally in state
+      };
+      reader.readAsDataURL(file); // Convert image to data URL
+    }
+  };
+
   const handleSave = () => {
     // Simulate saving the data (e.g., API call)
     console.log("Saved Details:", formData);
+    if (selectedImage) {
+      localStorage.setItem("uploadedImage", selectedImage); // Save image to localStorage
+      navigate("/second"); // Navigate to second page
+    } else {
+      alert("Please upload an image before saving.");
+    }
   };
+
+
 
   return (
     <div className="edit-container">
@@ -90,7 +112,7 @@ const EditProfile = () => {
                 <label>
                   <strong>Password:</strong>
                   <input
-                    type="password"
+                    type="text"
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
@@ -121,10 +143,8 @@ const EditProfile = () => {
 
             </section>
             <section className="edit-image">
-              <img
-                src= {profile} // Replace with actual profile image URL
-                alt="Profile"
-              />
+            {/*<img src= {profile} alt="Profile" />*/}
+            <input type="file" accept="image/*" onChange={handleImageChange} />
               <p style={{color:'#254E58',}}>
                 File Format: jpg, png, jpeg
                 <br />

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect  } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/sidebar";
 import TopBar from "./components/topbar";
 import Profile from "./pages/Profile/AdminProfile";
 import EditProfile from "./pages/Profile/AdminEdit";
+import NotSupported from "./NotSupported";
 // Import existing pages
 import Dashboard from "./pages/Dashboard/index";
 import ZoneSetup from "./pages/ZoneSetup/ZoneSetup";
@@ -63,6 +64,25 @@ const App = () => {
   const handleMenuClick = (menu) => {
     setActiveMenu(menu === activeMenu ? "" : menu); // Close if already active, open otherwise
   };
+
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024);
+
+  // Check screen size on load and resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  if (!isDesktop) {
+    // Show Not Supported screen for non-desktop devices
+    return <NotSupported />;
+  }
 
   return (
     <Router>

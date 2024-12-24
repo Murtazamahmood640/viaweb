@@ -108,13 +108,13 @@ const PriceModel = () => {
 
       <div className="pricingDetails">
         <div className="baseFare">
-          <h4>Base Fare</h4>
+          <h4>Base Fare </h4>
           <div className="inputGroup">
             <span className="rangeColon">:</span>
-            <input type="text" placeholder="PKR 80" />
-            <input type="text" placeholder="PKR 250" />
-            <input type="text" placeholder="PKR 450" />
-            <input type="text" placeholder="PKR 750" />
+            <input type="number" placeholder="80" />
+            <input type="number" placeholder="250" />
+            <input type="number" placeholder="450" />
+            <input type="number" placeholder="750" />
           </div>
         </div>
 
@@ -156,10 +156,10 @@ const PriceModel = () => {
             <div className="extraLine">
               <span className="extraLabel">Extra Fare</span>
               <span className="rangeColon">:</span>
-              <input type="number" placeholder="PKR 50" />
-              <input type="number" placeholder="PKR 50" />
-              <input type="number" placeholder="PKR 50" />
-              <input type="number" placeholder="PKR 50" />
+              <input type="number" placeholder="50" />
+              <input type="number" placeholder="50" />
+              <input type="number" placeholder="50" />
+              <input type="number" placeholder="50" />
             </div>
             <div className="extraLine">
               <span className="extraLabel">Peak Hour</span>

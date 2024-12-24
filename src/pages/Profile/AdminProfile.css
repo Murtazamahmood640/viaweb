@@ -48,7 +48,7 @@ body {
 .profile-edit-style {
   text-decoration: none;
   margin-top: 20px;
-  padding: 0.8% 1.2%;
+  padding: 0.9% 1.6%;
   background-color: #254E58;
   color: white;
   font-size: 16px;
@@ -123,13 +123,10 @@ p{
   font-size: 16px;
 }
 
-.profile-updated-email span, .profile-updated-phone span{
+.profile-updated-email span, .profile-updated-phone span, .profile-updated-password span{
   display: flex;
   font-size: 15px;
   font-family:'Arial', sans-serif ;
   margin-top: 0.5%;
   padding-bottom: 0.5%;
 }
-
-
-

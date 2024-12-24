@@ -86,7 +86,7 @@ const CreateUser = () => {
       createdDate: "2024-09-10",
     },
   ]);
-
+ 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -95,14 +95,16 @@ const CreateUser = () => {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-
+ 
+  const [imageFile, setImageFile] = useState(null); // for image upload
+ 
   const [showModal, setShowModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
   const [modalShowPassword, setModalShowPassword] = useState(false);
-
+ 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [userToDelete, setUserToDelete] = useState(null);
-
+ 
   const [showEditModal, setShowEditModal] = useState(false);
   const [editFormData, setEditFormData] = useState({
     name: "",
@@ -111,11 +113,18 @@ const CreateUser = () => {
     role: "",
   });
   const [editShowPassword, setEditShowPassword] = useState(false);
-
+ 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
+ 
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImageFile(URL.createObjectURL(file)); // To show the uploaded image preview
+    }
+  };
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.name && formData.role && formData.email && formData.password) {
@@ -131,28 +140,28 @@ const CreateUser = () => {
       setFormData({ name: "", email: "", password: "", role: "" });
     }
   };
-
+ 
   const handleDelete = (id) => {
     setUsers(users.filter((user) => user.id !== id));
   };
-
+ 
   const handleEditClick = (user) => {
     setSelectedUser(user);
     setShowModal(true);
     setModalShowPassword(false);
   };
-
+ 
   const handleModalClose = () => {
     setShowModal(false);
     setSelectedUser(null);
   };
-
+ 
   const handleModalDelete = (user) => {
     // Show delete confirmation modal
     setUserToDelete(user);
     setShowDeleteModal(true);
   };
-
+ 
   const handleDeleteConfirm = () => {
     if (userToDelete) {
       handleDelete(userToDelete.id);
@@ -161,12 +170,12 @@ const CreateUser = () => {
     setUserToDelete(null);
     setShowModal(false);
   };
-
+ 
   const handleDeleteCancel = () => {
     setShowDeleteModal(false);
     setUserToDelete(null);
   };
-
+ 
   const handleEditModalOpen = () => {
     if (selectedUser) {
       setEditFormData({
@@ -179,18 +188,15 @@ const CreateUser = () => {
       setShowEditModal(true);
     }
   };
-
+ 
   const handleEditModalClose = () => {
     setShowEditModal(false);
   };
-
+ 
   const handleEditFormChange = (e) => {
     setEditFormData({ ...editFormData, [e.target.name]: e.target.value });
   };
-
-
  
-
   const handleUpdateUser = () => {
     if (
       editFormData.name &&
@@ -217,17 +223,33 @@ const CreateUser = () => {
       setSelectedUser(null);
     }
   };
-
+ 
   return (
     <div className="CreateUser-container">
       <div className="form-container">
         <h2>Create User</h2>
         <div className="image-upload">
-          <img src={UserPic} alt="User Upload" className="upload-image" />
-          <button type="button" className="upload-button">
+          <img
+            src={imageFile || UserPic} // Use the uploaded image or the default one
+            alt="User Upload"
+            className="upload-image"
+          />
+          <input
+            type="file"
+            id="file-upload"
+            className="file-upload-input"
+            onChange={handleImageUpload}
+            style={{ display: "none" }} // Hide the input element
+          />
+          <button
+            type="button"
+            className="upload-button"
+            onClick={() => document.getElementById("file-upload").click()} // Trigger file input on button click
+          >
             Upload New
           </button>
         </div>
+ 
         <form onSubmit={handleSubmit} className="user-formDesign">
           <div className="form-field">
             <label htmlFor="name">Full Name</label>
@@ -293,7 +315,7 @@ const CreateUser = () => {
           </button>
         </form>
       </div>
-
+ 
       <div className="table-container">
         <h2>Users</h2>
         <table className="user-table">
@@ -317,16 +339,12 @@ const CreateUser = () => {
                 <td>{user.name}</td>
                 <td>{user.role}</td>
                 <td>
-                
-                
                   <button className="popupedit-btn">
                     <FaPencilAlt onClick={() => handleEditClick(user)} />
                   </button>
                   <button
                     className="delete-btn"
-                    onClick={() => handleModalDelete(user)
-
-                    }
+                    onClick={() => handleModalDelete(user)}
                   >
                     <FaTrash />
                   </button>
@@ -335,9 +353,8 @@ const CreateUser = () => {
             ))}
           </tbody>
         </table>
-       
       </div>
-
+ 
       {/* User Details Modal */}
       {showModal && selectedUser && (
         <div className="modal-overlay">
@@ -365,7 +382,7 @@ const CreateUser = () => {
                     <p>{selectedUser.role}</p>
                   </div>
                 </div>
-
+ 
                 <div className="info-row">
                   <div className="info-block password-block">
                     <label>Password:</label>
@@ -404,14 +421,12 @@ const CreateUser = () => {
           </div>
         </div>
       )}
-
+ 
       {/* Delete Confirmation Modal */}
       {showDeleteModal && (
         <div className="modal-overlay">
           <div className="delete-modal-container">
-            <div className="delete-icon-circle">
-              🗑️
-            </div>
+            <div className="delete-icon-circle">🗑️</div>
             <h3 className="delete-title">Delete User</h3>
             <p className="delete-message">
               Are you sure you want to permanently delete this user?
@@ -420,14 +435,17 @@ const CreateUser = () => {
               <button className="cancel-button" onClick={handleDeleteCancel}>
                 Cancel
               </button>
-              <button className="confirm-delete-button" onClick={handleDeleteConfirm}>
+              <button
+                className="confirm-delete-button"
+                onClick={handleDeleteConfirm}
+              >
                 Delete
               </button>
             </div>
           </div>
         </div>
       )}
-
+ 
       {/* Edit User Modal */}
       {showEditModal && (
         <div className="modal-overlay">
@@ -519,5 +537,5 @@ const CreateUser = () => {
     </div>
   );
 };
-
+ 
 export default CreateUser;

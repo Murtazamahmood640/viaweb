@@ -208,11 +208,11 @@ const AllTrips = () => {
  
   return (
     <div className="user-management">
-      <h2 className="page-title">Vehicles</h2>
+      <h2 className="page-title">All Trips</h2>
  
       <div className="filters">
         <div className="left">
-          <div className="driver-input-container">
+          <div className="dispatcher-input-container">
             <input
               type="text"
               className="left-input"
@@ -223,7 +223,7 @@ const AllTrips = () => {
             <FaSearch className="input-icon" />
           </div>
  
-          <div className="driver-select-container">
+          <div className="dispatcher-select-container">
             <select
               className="left-select"
               value={statusFilter}
@@ -235,7 +235,7 @@ const AllTrips = () => {
             </select>
             <FaChevronDown className="select-icon" />
           </div>
-          <div className="driver-date-container">
+          <div className="dispatcher-date-container">
             <DatePicker
               className="left-date"
               selected={selectedDateRange[0]}

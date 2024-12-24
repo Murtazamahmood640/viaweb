@@ -27,7 +27,7 @@ const TripDetails = () => {
         <div className="tripdetail-right-container">
           <div className="row">
             <div className="box-driver-details-box">
-              <h4>Driver Details</h4>
+              <h4>Trip Details</h4>
               <div className="driver-details-content">
                 <img className="user-image" src={UserImage} alt="user_image" />
                 <div className="driver-info-detail">

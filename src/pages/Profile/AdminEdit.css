@@ -45,15 +45,15 @@ input {
 }
 
 .edit-image{
-    padding: 0%;
+    padding: 0px;
     width: 30%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.edit-image img {
-  width: 40%;
-  border-radius: 90%;
+.edit-image input {
+  padding: 10px;
+  border-radius: 10%;
 }
 
 .edit-info-line {
@@ -79,15 +79,14 @@ input {
 .profile-save-button {
     text-decoration: none;
     margin-top: 6%;
-    padding: 0.8% 1.2%;
+    padding: 0.9% 1.6%;
     background-color: #254E58;
     color: white;
     font-size: 16px;
     font-weight: medium;
     border: none;
     border-radius: 10%;
-    cursor: pointer;
-  
+    cursor: pointer; 
 }
 
 .profile-save-button:hover {
