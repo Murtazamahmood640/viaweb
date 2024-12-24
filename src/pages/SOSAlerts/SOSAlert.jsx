@@ -1,22 +1,18 @@
 import React, { useState } from "react";
 import "./SOSalerts.css";
-import {
-  FaSearch,
-  FaChevronDown,
-  FaCalendarAlt,
-} from "react-icons/fa";
+import { FaSearch, FaChevronDown, FaCalendarAlt } from "react-icons/fa";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+ 
 const SOSAlert = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-  const [statusFilter, setStatusFilter] = useState("");
+  const [SeverityFilter, setSeveriTyFilter] = useState("");
   const [selectedDate, setSelectedDate] = useState(null);
-
-  const incidents = [
+ 
+  const sosAlert = [
     {
-      alertType: "🟥 High",
+      Severity: "🟥 High",
       time: "14:32, Nov 5",
       driverName: "John Ray",
       passengerName: "John Ray",
@@ -27,7 +23,7 @@ const SOSAlert = () => {
       mapPreview: "Map Image",
     },
     {
-      alertType: "🟨 Medium",
+      Severity: "🟨 Medium",
       time: "12:15, Nov 3",
       driverName: "David Brown",
       passengerName: "Lauren Price",
@@ -38,7 +34,7 @@ const SOSAlert = () => {
       mapPreview: "Map Image",
     },
     {
-      alertType: "🟥 High",
+      Severity: "🟥 High",
       time: "11:05, Nov 3",
       driverName: "Mark Kim",
       passengerName: "Abel Gaylord",
@@ -49,7 +45,7 @@ const SOSAlert = () => {
       mapPreview: "Map Image",
     },
     {
-      alertType: "🟥 High",
+      Severity: "🟥 High",
       time: "15:10, Oct 31",
       driverName: "Joshua",
       passengerName: "Joe Beer",
@@ -60,7 +56,7 @@ const SOSAlert = () => {
       mapPreview: "Map Image",
     },
     {
-      alertType: "🟨 Medium",
+      Severity: "🟨 Medium",
       time: "13:15, Oct 28",
       driverName: "Anderson",
       passengerName: "Lauren Price",
@@ -71,7 +67,7 @@ const SOSAlert = () => {
       mapPreview: "Map Image",
     },
     {
-      alertType: "🟨 Medium",
+      Severity: "🟨 Medium",
       time: "08:45, Oct 27",
       driverName: "Andrew John",
       passengerName: "Abel Gaylord",
@@ -82,7 +78,7 @@ const SOSAlert = () => {
       mapPreview: "Map Image",
     },
     {
-      alertType: "🟥 High",
+      Severity: "🟥 High",
       time: "10:20, Oct 23",
       driverName: "Mark Miller",
       passengerName: "Abel Gaylord",
@@ -92,60 +88,55 @@ const SOSAlert = () => {
       actions: "Notified backup, acknowledged",
       mapPreview: "Map Image",
     },
- 
   ];
-
+ 
   const entriesPerPage = 7;
   const totalPages = Math.ceil(50 / entriesPerPage);
-
+ 
   const handlePageChange = (page) => {
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page);
     }
   };
-
-  const filteredIncidents = incidents.filter((incident) => {
+ 
+  const filteredSosAlert = sosAlert.filter((sosAlert) => {
     const matchesSearch =
-      incident.time.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      incident.driverName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      incident.passengerName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      incident.actions.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      incident.mapPreview.toLowerCase().includes(searchTerm.toLowerCase());
-
-    const matchesstatus = statusFilter
-      ? incident.status.toLowerCase().includes(statusFilter.toLowerCase())
+      sosAlert.driverName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      sosAlert.passengerName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      sosAlert.actions.toLowerCase().includes(searchTerm.toLowerCase());
+ 
+    const matchesSeveriTy = SeverityFilter
+      ? sosAlert.Severity.includes(SeverityFilter)
       : true;
-
+ 
     let matchesDate = true;
     if (selectedDate) {
       const dateString = selectedDate.toLocaleDateString("en-US", {
         month: "short",
         day: "numeric",
       });
-      matchesDate =
-        incident.tripDetails.includes(dateString) ||
-        incident.status.includes(dateString);
+      matchesDate = sosAlert.time.includes(dateString);
     }
-
-    return matchesSearch && matchesstatus && matchesDate;
+ 
+    return matchesSearch && matchesSeveriTy && matchesDate;
   });
-
-  const displayedIncidents = filteredIncidents.slice(
+ 
+  const displayedSosAlert = filteredSosAlert.slice(
     (currentPage - 1) * entriesPerPage,
     currentPage * entriesPerPage
   );
-
-  const totalEntries = 50; 
+ 
+  const totalEntries = 50;
   const startEntry = (currentPage - 1) * entriesPerPage + 1;
   const endEntry = Math.min(currentPage * entriesPerPage, totalEntries);
-
+ 
   const resetFilters = () => {
     setSearchTerm("");
-    setStatusFilter("");
+    setSeveriTyFilter("");
     setSelectedDate(null);
     setCurrentPage(1);
   };
-
+ 
   return (
     <div className="user-management">
       <h2 className="page-title">Active SOS Alerts</h2>
@@ -161,20 +152,20 @@ const SOSAlert = () => {
             />
             <FaSearch className="input-icon" />
           </div>
-
+ 
           <div className="dispatcher-select-container">
             <select
               className="left-select"
-              value={statusFilter}
-              onChange={(e) => setStatusFilter(e.target.value)}
+              value={SeverityFilter}
+              onChange={(e) => setSeveriTyFilter(e.target.value)}
             >
-              <option value="">Status</option>
-              <option value="Nov 5">Pick Up</option>
-              <option value="Nov 3">Occupied</option>
+              <option value="">Severity</option>
+              <option value="🟥 High">High</option>
+              <option value="🟨 Medium">Medium</option>
             </select>
             <FaChevronDown className="select-icon" />
           </div>
-
+ 
           <div className="dispatcher-date-container">
             <DatePicker
               className="left-date"
@@ -186,14 +177,14 @@ const SOSAlert = () => {
             <FaCalendarAlt className="date-icon" />
           </div>
         </div>
-
+ 
         <div className="right">
           <button className="reset-btn" onClick={resetFilters}>
             Reset Filter
           </button>
         </div>
       </div>
-
+ 
       <div className="table-cont">
         <table className="user-table">
           <thead>
@@ -209,21 +200,21 @@ const SOSAlert = () => {
             </tr>
           </thead>
           <tbody>
-            {displayedIncidents.map((incident) => (
-              <tr key={incident.alertType}>
-                <td>{incident.alertType}</td>
-                <td>{incident.time}</td>
-                <td>{incident.driverName}</td>
-                <td>{incident.passengerName}</td>
-                <td>{incident.tripDetails}</td>
-                <td>{incident.status}</td>
-                <td>{incident.eta}</td>
-                <td>{incident.actions}</td>
+            {displayedSosAlert.map((sosAlert) => (
+              <tr key={sosAlert.time + sosAlert.driverName}>
+                <td>{sosAlert.Severity}</td>
+                <td>{sosAlert.time}</td>
+                <td>{sosAlert.driverName}</td>
+                <td>{sosAlert.passengerName}</td>
+                <td>{sosAlert.tripDetails}</td>
+                <td>{sosAlert.status}</td>
+                <td>{sosAlert.eta}</td>
+                <td>{sosAlert.actions}</td>
               </tr>
             ))}
           </tbody>
         </table>
-
+ 
         <div className="pagination">
           <div className="entries-info">
             Showing {startEntry} to {endEntry} of {totalEntries} entries
@@ -262,5 +253,5 @@ const SOSAlert = () => {
     </div>
   );
 };
-
+ 
 export default SOSAlert;
