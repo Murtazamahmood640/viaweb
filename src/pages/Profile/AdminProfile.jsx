@@ -6,8 +6,7 @@ import { useLocation } from "react-router-dom";
 const Profile  = () => {
   
   const location = useLocation();
-
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [preview, setPreview] = useState(null);
   
   const updatedData = location.state?.updatedData || {
     // Default data if nothing is passed
@@ -15,13 +14,15 @@ const Profile  = () => {
     role: "Default Role",
     email: "default@domain.com",
     phone: "000-0000000",
-    password: "********"
+    password: "********",
+    preview:""
   };
+  
 
   useEffect(() => {
-    const image = localStorage.getItem("uploadedImage"); // Retrieve image from localStorage
+    const image = localStorage.getItem("uploadedImage"); 
     if (image) {
-      setSelectedImage(image);
+      setPreview(image);
     }
   }, []);
 
@@ -62,17 +63,15 @@ const Profile  = () => {
             </section>
             
             <section className="edit-image">
-              {/*<img src= {profile} alt="Profile" />*/}
-
-              <div>
-                <h1>Selected Image</h1>
-                {selectedImage ? (
-                  <img src={selectedImage} alt="Selected" style={{ width: "200px", height: "200px" }}/>
-                ) : (
-                  <p>No image selected</p>
-                )}
-              </div>
-
+             
+              {preview ? (
+                <img
+                src={preview}
+                alt="Profile Preview"
+                style={{ width: "140px", height: "140px", margin:"30px",borderRadius: "50%" }}/>
+              ) : (
+              <p>No image selected</p>
+              )}
             </section>
           </div>
         </main>

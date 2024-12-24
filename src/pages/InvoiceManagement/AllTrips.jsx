@@ -16,6 +16,8 @@ import { BsTrash3 } from "react-icons/bs";
 import { IoCloseSharp } from "react-icons/io5";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useNavigate } from "react-router-dom";
+
  
  
 const AllTrips = () => {
@@ -32,25 +34,28 @@ const AllTrips = () => {
   const [ratingFilter, setRatingFilter] = useState("");
  
   const [drivers, setDrivers] = useState([
-    { id: 1, make: "Toyota Yaris", type: "Sedan", color: "White", year: 2022, owner: "John Ray", licensePlateNo: "BET-123", chassisNumber: "1HGCM82633A123456", fuel: "Petrol" ,engine:'1900',status:"Active", date: "15 Oct 2024 at 08:07:23" , passanger: "murtaza", fare:"250"},
-    { id: 2, make: "Honda City", type: "Sedan", color: "Grey", year: 2020, owner: "David Brown", licensePlateNo: "BTD-523", chassisNumber: "1HGCM82633A123456", fuel: "Petrol" ,engine:'1900',status:"Active", date: "15 Oct 2024 at 08:07:23", passanger: "adil" , fare:"350"},
-    { id: 3, make: "Toyota Yaris", type: "Sedan", color: "Silver", year: 2021, owner: "Mark Kim", licensePlateNo: "BAF-734", chassisNumber: "MA3EYD32S007004AN", fuel: "Petrol" ,engine:'1900',status:"Active", date: "15 Oct 2024 at 08:07:23", passanger: "maaz", fare:"550" },
-    { id: 4, make: "Toyota Corolla", type: "Sedan", color: "Black", year: 2022, owner: "Joshua", licensePlateNo: "BYT-009", chassisNumber: "1HGCM82633A123456", fuel: "Petrol",engine:'1900',status:"Active", date: "15 Oct 2024 at 08:07:23" , passanger: "ali", fare:"5550"},
-    { id: 5, make: "Suzuki Alto", type: "Hatchback", color: "Blue", year: 2019, owner: "Anderson", licensePlateNo: "BAF-999", chassisNumber: "MA3EYD32S007004AN", fuel: "Petrol",engine:'1900',status:"Active" , date: "15 Oct 2024 at 08:07:23", passanger: "josh" , fare:"50"},
-    { id: 6, make: "Suzuki Alto", type: "Hatchback", color: "Blue", year: 2019, owner: "Anderson", licensePlateNo: "BAF-999", chassisNumber: "MA3EYD32S007004AN", fuel: "Petrol" ,engine:'1900',status:"Active", date: "15 Oct 2024 at 08:07:23" , passanger: "fatima", fare:"150"},
-    { id: 7, make: "Toyota Corolla", type: "Sedan", color: "Brown", year: 2023, owner: "Mark Miller", licensePlateNo: "BAS-999", chassisNumber: "MA3EYD32S007004AN", fuel: "Petrol",engine:'1900',status:"Active" , date: "15 Oct 2024 at 08:07:23" , passanger: "munawar", fare:"1050"},
-    { id: 8, make: "Toyota Yaris", type: "Sedan", color: "White", year: 2022, owner: "John Ray", licensePlateNo: "BET-123", chassisNumber: "1HGCM82633A123456", fuel: "Petrol",engine:'1900',status:"Active" , date: "15 Oct 2024 at 08:07:23" , passanger: "mashal", fare:"550"},
-    { id: 9, make: "Honda City", type: "Sedan", color: "Grey", year: 2020, owner: "David Brown", licensePlateNo: "BTD-523", chassisNumber: "1HGCM82633A123456", fuel: "Petrol",engine:'1900',status:"Active", date: "15 Oct 2024 at 08:07:23"  , passanger: "manal", fare:"650"},
-    { id: 10, make: "Toyota Yaris", type: "Sedan", color: "Silver", year: 2021, owner: "Mark Kim", licensePlateNo: "BAF-734", chassisNumber: "MA3EYD32S007004AN", fuel: "Petrol" ,engine:'1900',status:"Active", date: "15 Oct 2024 at 08:07:23" , passanger: "najaf", fare:"300"},
-    { id: 11, make: "Toyota Corolla", type: "Sedan", color: "Black", year: 2022, owner: "Joshua", licensePlateNo: "BYT-009", chassisNumber: "1HGCM82633A123456", fuel: "Petrol" ,engine:'1900',status:"Active", date: "15 Oct 2024 at 08:07:23" , passanger: "murtaza", fare:"1000"},
-    { id: 12, make: "Suzuki Alto", type: "Hatchback", color: "Blue", year: 2019, owner: "Anderson", licensePlateNo: "BAF-999", chassisNumber: "MA3EYD32S007004AN", fuel: "Petrol" ,engine:'1900',status:"Active", date: "15 Oct 2024 at 08:07:23" , passanger: "ali", fare:"550"},
-    { id: 13, make: "Honda City", type: "Sedan", color: "Grey", year: 2018, owner: "Andrew John", licensePlateNo: "BGF-948", chassisNumber: "1HGCM82633A123456", fuel: "Petrol",engine:'1900',status:"Active" , date: "15 Oct 2024 at 08:07:23" , passanger: "maaz", fare:"995"},
-    { id: 14, make: "Toyota Corolla", type: "Sedan", color: "Brown", year: 2023, owner: "Mark Miller", licensePlateNo: "BAS-999", chassisNumber: "MA3EYD32S007004AN", fuel: "Petrol",engine:'1900',status:"Active" , date: "15 Oct 2024 at 08:07:23", passanger: "josh", fare:"550" }
+    { id: 1, make: "Toyota Yaris", type: "Sedan", color: "White", year: 2022, owner: "John Ray", licensePlateNo: "BET-123", chassisNumber: "1HGCM82633A123456", fuel: "Petrol" ,engine:'1900',status:"Active", date: "2024-01-10", time :'08:07:23', passanger: "murtaza", fare:"250"},
+    { id: 2, make: "Honda City", type: "Sedan", color: "Grey", year: 2020, owner: "David Brown", licensePlateNo: "BTD-523", chassisNumber: "1HGCM82633A123456", fuel: "Petrol" ,engine:'1900',status:"Active", date: "2024-02-15", time :'08:07:23', passanger: "adil" , fare:"350"},
+    { id: 3, make: "Toyota Yaris", type: "Sedan", color: "Silver", year: 2021, owner: "Mark Kim", licensePlateNo: "BAF-734", chassisNumber: "MA3EYD32S007004AN", fuel: "Petrol" ,engine:'1900',status:"Active", date: "2024-03-12", time :'08:07:23', passanger: "maaz", fare:"550" },
+    { id: 4, make: "Toyota Corolla", type: "Sedan", color: "Black", year: 2022, owner: "Joshua", licensePlateNo: "BYT-009", chassisNumber: "1HGCM82633A123456", fuel: "Petrol",engine:'1900',status:"Active", date: "2024-04-18" , time :'08:07:23', passanger: "ali", fare:"5550"},
+    { id: 5, make: "Suzuki Alto", type: "Hatchback", color: "Blue", year: 2019, owner: "Anderson", licensePlateNo: "BAF-999", chassisNumber: "MA3EYD32S007004AN", fuel: "Petrol",engine:'1900',status:"Active" , date: "2024-05-25", time :'08:07:23', passanger: "josh" , fare:"50"},
+    { id: 6, make: "Suzuki Alto", type: "Hatchback", color: "Blue", year: 2019, owner: "Anderson", licensePlateNo: "BAF-999", chassisNumber: "MA3EYD32S007004AN", fuel: "Petrol" ,engine:'1900',status:"Active", date: "2024-06-05" , time :'08:07:23', passanger: "fatima", fare:"150"},
+    { id: 7, make: "Toyota Corolla", type: "Sedan", color: "Brown", year: 2023, owner: "Mark Miller", licensePlateNo: "BAS-999", chassisNumber: "MA3EYD32S007004AN", fuel: "Petrol",engine:'1900',status:"Active" , date: "2024-07-10", time :'08:07:23', passanger: "munawar", fare:"1050"},
+    { id: 8, make: "Toyota Yaris", type: "Sedan", color: "White", year: 2022, owner: "John Ray", licensePlateNo: "BET-123", chassisNumber: "1HGCM82633A123456", fuel: "Petrol",engine:'1900',status:"Active" , date:"2024-08-15", time :'08:07:23' , passanger: "mashal", fare:"550"},
+    { id: 9, make: "Honda City", type: "Sedan", color: "Grey", year: 2020, owner: "David Brown", licensePlateNo: "BTD-523", chassisNumber: "1HGCM82633A123456", fuel: "Petrol",engine:'1900',status:"Active", date:  "2024-09-05", time :'08:07:23' , passanger: "manal", fare:"650"},
+    { id: 10, make: "Toyota Yaris", type: "Sedan", color: "Silver", year: 2021, owner: "Mark Kim", licensePlateNo: "BAF-734", chassisNumber: "MA3EYD32S007004AN", fuel: "Petrol" ,engine:'1900',status:"Active", date:  "2024-09-25", time :'08:07:23', passanger: "najaf", fare:"300"},
+    { id: 11, make: "Toyota Corolla", type: "Sedan", color: "Black", year: 2022, owner: "Joshua", licensePlateNo: "BYT-009", chassisNumber: "1HGCM82633A123456", fuel: "Petrol" ,engine:'1900',status:"Active", date: "2024-10-10", time :'08:07:23', passanger: "murtaza", fare:"1000"},
+    { id: 12, make: "Suzuki Alto", type: "Hatchback", color: "Blue", year: 2019, owner: "Anderson", licensePlateNo: "BAF-999", chassisNumber: "MA3EYD32S007004AN", fuel: "Petrol" ,engine:'1900',status:"Active", date: "2024-11-01", time :'08:07:23' , passanger: "ali", fare:"550"},
+    { id: 13, make: "Honda City", type: "Sedan", color: "Grey", year: 2018, owner: "Andrew John", licensePlateNo: "BGF-948", chassisNumber: "1HGCM82633A123456", fuel: "Petrol",engine:'1900',status:"Active" , date: "2024-11-20", time :'08:07:23' , passanger: "maaz", fare:"995"},
+    { id: 14, make: "Toyota Corolla", type: "Sedan", color: "Brown", year: 2023, owner: "Mark Miller", licensePlateNo: "BAS-999", chassisNumber: "MA3EYD32S007004AN", fuel: "Petrol",engine:'1900',status:"Active" , date: "2024-12-15", time :'08:07:23', passanger: "josh", fare:"550" }
  
 ]);
  
+   const navigate = useNavigate(); // React Router hook for navigation
  
- 
+const openDriverDetails = () => {
+  navigate('/invoice/trip-details');
+};
  
  
   // Close popup
@@ -160,41 +165,24 @@ const AllTrips = () => {
     const matchesSearch = driver.owner
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
- 
+  
     // Check if the driver's status matches the selected status filter
     const matchesStatus = statusFilter
       ? driver.status === statusFilter
       : true;
- 
+  
     // Date filtering logic for inclusive range
-    const driverDate = new Date(driver.joiningDate);
+    const driverDate = new Date(driver.date); // Parse the driver's date
     const [startDate, endDate] = selectedDateRange;
- 
-    // Normalize both start and end dates to midnight to ensure correct comparison
-    const normalizeDate = (joiningDate) => {
-      if (!joiningDate) return null;
-      const normalizedDate = new Date(joiningDate);
-      normalizedDate.setHours(0, 0, 0, 0); // Set to midnight
-      return normalizedDate;
-    };
- 
-    const normalizedStartDate = normalizeDate(startDate);
-    const normalizedEndDate = normalizeDate(endDate);
- 
+  
     const matchesDateRange =
-      (normalizedStartDate ? driverDate >= normalizedStartDate : true) &&
-      (normalizedEndDate ? driverDate <= normalizedEndDate : true);
- 
-    // Rating filtering logic
-    const matchesRatingRange = (() => {
-      if (!ratingFilter) return true; // If no rating filter is selected, match all
-      const [minRating, maxRating] = ratingFilter.split("-").map(Number); // Parse range
-      return driver.rating >= minRating && driver.rating <= maxRating;
-    })();
- 
+      (!startDate || driverDate >= startDate) &&
+      (!endDate || driverDate <= endDate);
+  
     // Combine all filters
-    return matchesSearch && matchesStatus && matchesDateRange && matchesRatingRange;
+    return matchesSearch && matchesStatus && matchesDateRange;
   });
+  
  
  
   const displayedDrivers = filteredDrivers.slice(
@@ -235,22 +223,21 @@ const AllTrips = () => {
             </select>
             <FaChevronDown className="select-icon" />
           </div>
-          <div className="dispatcher-date-container">
-            <DatePicker
-              className="left-date"
-              selected={selectedDateRange[0]}
-              onChange={(dates) => setSelectedDateRange(dates)} // Select both start and end date
-              startDate={selectedDateRange[0]}
-              endDate={selectedDateRange[1]}
-              selectsRange
-              dateFormat="yyyy-MM-dd"
-              placeholderText="Bookings details"
-              open={calendarOpen} // Bind open state to DatePicker
-              onClickOutside={() => setCalendarOpen(false)} // Close calendar on outside click
-            />
-            <FaCalendarAlt className="date-icon" onClick={toggleCalendar} />{" "}
-            {/* Icon triggers calendar */}
-          </div>
+         <div className="dispatcher-date-container">
+                      <DatePicker
+                        className="left-date"
+                        selected={selectedDateRange[0]}
+                        onChange={(dates) => setSelectedDateRange(dates)}
+                        startDate={selectedDateRange[0]}
+                        endDate={selectedDateRange[1]}
+                        selectsRange
+                        dateFormat="yyyy-MM-dd"
+                        placeholderText="Booking Details"
+                        open={calendarOpen}
+                        onClickOutside={() => setCalendarOpen(false)}
+                      />
+                      <FaCalendarAlt className="date-icon" onClick={toggleCalendar} />
+                    </div>
        
         </div>
  
@@ -268,10 +255,12 @@ const AllTrips = () => {
               <th>ID</th>
               <th>Passanger</th>
               <th>Booking Date</th>
+              <th>Booking Time</th>
               <th>Driver</th>
               <th>Vehicle Type</th>
               <th>Status</th>
               <th>Fare</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -280,10 +269,19 @@ const AllTrips = () => {
                 <td>{(currentPage - 1) * entriesPerPage + index + 1}</td>
                 <td>{driver.passanger}</td>
                 <td>{driver.date}</td>
+                <td>{driver.time}</td>
                 <td>{driver.owner}</td>
                 <td>{driver.type}</td>
                 <td>{driver.status}</td>
                 <td>{driver.fare}</td>
+                <td>
+                <button
+                    className="popupView-btn"
+                    onClick={() => openDriverDetails(driver)}
+                  >
+                    Trip Details
+                  </button>
+                </td>
  
              
               </tr>

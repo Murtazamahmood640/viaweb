@@ -23,6 +23,12 @@
   display: flex;
   justify-content: space-between;
 }
+.incident {
+  width: 70%;
+  display: flex;
+  justify-content: left;
+  gap: 5%;
+}
  
 .right {
   width: 25%;

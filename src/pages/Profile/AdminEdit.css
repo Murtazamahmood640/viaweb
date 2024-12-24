@@ -55,7 +55,17 @@ input {
   padding: 10px;
   border-radius: 10%;
 }
-
+.upload-button {
+    display: flex;
+    margin-top: 2%;
+    background: #254e58;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    border: none;
+    padding: 8px 20px;
+    font-size: 13px;
+  }
 .edit-info-line {
     display: flex;
     gap: 4%;

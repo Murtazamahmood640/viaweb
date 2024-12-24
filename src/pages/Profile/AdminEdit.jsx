@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./AdminEdit.css";
-/*import profile from "../../Assets/SidebarDropdownIcons/user.png"*/
+import UserPic from "../../Assets/SidebarDropdownIcons/user.png";
 
 const EditProfile = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
   const navigate = useNavigate();
+  const [preview, setPreview] = useState(null);
+
 
   const [formData, setFormData] = useState({
     name: "Shaeroniya",
@@ -20,34 +21,40 @@ const EditProfile = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setSelectedImage(reader.result); // Save image data URL locally in state
-      };
-      reader.readAsDataURL(file); // Convert image to data URL
-    }
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+  if (file) {
+    setFormData({ ...formData, image: file });
+    const reader = new FileReader();
+    reader.onload = () => {
+      setPreview(reader.result);
+      localStorage.setItem("uploadedImage", reader.result);
+    };
+    reader.readAsDataURL(file);
+  }
   };
+
 
   const handleSave = () => {
-    // Simulate saving the data (e.g., API call)
     console.log("Saved Details:", formData);
-    if (selectedImage) {
-      localStorage.setItem("uploadedImage", selectedImage); // Save image to localStorage
-      navigate("/second"); // Navigate to second page
-    } else {
-      alert("Please upload an image before saving.");
+  
+    if (!preview) {
+      alert("Please upload an image before saving!");
+      return;
     }
-  };
+  
+    navigate("/Profile/AdminProfile", {
+      state: { 
+        updatedData: formData, // Pass form data only
+      },
+    });
+  };;
 
 
 
   return (
+   
     <div className="edit-container">
-
       <div className="edit-content">
 
         <main className="edit-main">
@@ -143,19 +150,37 @@ const EditProfile = () => {
 
             </section>
             <section className="edit-image">
-            {/*<img src= {profile} alt="Profile" />*/}
-            <input type="file" accept="image/*" onChange={handleImageChange} />
+            <img
+          src={preview || UserPic}
+          alt="Profile Preview"
+          style={{
+            width: "100px",
+            height: "100px",
+            borderRadius: "50%",
+            objectFit: "cover",
+          }}
+        />
+        <input type="file"
+            id="file-upload"
+            accept="image/*"
+            className="file-upload-input"
+            onChange={handleImageChange}
+            style={{ display: "none" }} 
+          />
+          <button
+            type="button"
+            className="upload-button"
+            onClick={() => document.getElementById("file-upload").click()} 
+            >
+            Upload New
+          </button>
               <p style={{color:'#254E58',}}>
                 File Format: jpg, png, jpeg
                 <br />
                 Max Size: 5 MB
               </p>
             </section>
-            
           </div>
-
-          
-          
         </main>
       </div>
     </div>

@@ -78,7 +78,7 @@
 
 .driver-info-detail p {
   margin: 0; /* Remove default paragraph margin */
-  font-size: 13px;
+  font-size: 12px;
   font-weight: bold;
   margin-top: 10px;
 }
@@ -90,7 +90,7 @@
   padding: 5px 10px; /* Add padding for better appearance */
   display: inline-block; /* Ensure the background wraps only around the text */
   margin-top: 10px; /* Add some spacing from the previous text */
-  width: 32%;
+  width: 35%;
   font-size: 12px;
 }
 

@@ -273,46 +273,16 @@ const Sidebar = ({
           )}
         </li>
 
+
         {/* Price Model */}
-        <li>
-          <div
-            onClick={() => handleMenuClick("price-model")}
-            className={`menu-heading ${
-              activeMenu === "price-model" ? "active" : ""
-            }`}
-          >
-            <div className="left-content">
-              <IoPricetag /> <span>{isCollapsed ? "" : "Price Model"}</span>
-            </div>
-            <div className="right-content">
-              {activeMenu === "price-model" ? (
-                <img
-                  src={dropdownIcon}
-                  alt="Dropdown Up"
-                  className="dropdown-icon"
-                />
-              ) : (
-                <img
-                  src={dropdownIcon}
-                  alt="Dropdown Down"
-                  className="dropdown-icon"
-                />
-              )}
-            </div>
-          </div>
-          {activeMenu === "price-model" && !isCollapsed && (
-        <ul className="dropdown">
-          <li>
-            <Link to="/price-model">
-              <GiPriceTag /> {/* Icon for Price Model */}
-              <span>Price Model</span>
-            </Link>
-          </li>
-         
-        </ul>
-      )}
-    
+        {/* dispatchdriver Management */}
+
+<li className="links">
+          <Link to="/price-model">
+            <IoPricetag /> <span>{isCollapsed ? "" : "Price Model "}</span>
+          </Link>
         </li>
+    
 
         {/* Driver Management */}
         <li>
@@ -350,24 +320,14 @@ const Sidebar = ({
               <span>All Drivers</span>
             </Link>
           </li>
-          <li>
-            <Link to="/drivermanagement/details">
-              <MdPersonPin /> {/* Icon for Driver Details */}
-              <span>Driver Details</span>
-            </Link>
-          </li>
+       
           <li>
             <Link to="/drivermanagement/request">
               <BsChatDots /> {/* Icon for Driver Chat */}
               <span>Driver Request</span>
             </Link>
           </li>
-          <li>
-            <Link to="/drivermanagement/trips">
-              <FaRoute /> {/* Icon for Driver Trips */}
-              <span>Driver Trips</span>
-            </Link>
-          </li>
+        
         
         </ul>
       )}
@@ -469,18 +429,7 @@ const Sidebar = ({
               <span>All Trips</span>
             </Link>
           </li>
-          <li>
-            <Link to="/invoice/trip-details">
-              <MdDetails /> {/* Icon for Trip Details */}
-              <span>Trip Details</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/invoice/generated">
-              <AiOutlineFileText /> {/* Icon for Generated Invoice */}
-              <span>Generated Invoice</span>
-            </Link>
-          </li>
+     
         </ul>
       )}
         </li>

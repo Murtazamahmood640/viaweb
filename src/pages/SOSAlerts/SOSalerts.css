@@ -103,7 +103,9 @@
   border: 1px solid #ccc;
   background: #fff;
   border-radius: 10px;
-  overflow:visible; 
+  overflow:scroll; 
+  overflow-x: scroll;
+  overflow-y: hidden;
 }
 
 .incident-table {

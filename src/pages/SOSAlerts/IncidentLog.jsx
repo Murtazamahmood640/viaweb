@@ -150,7 +150,7 @@ const IncidentLog = () => {
     <div className="user-management">
       <h2 className="page-title">Incident Log</h2>
       <div className="filters">
-        <div className="left">
+        <div className="incident">
           <div className="dispatcher-input-container">
             <input
               type="text"
@@ -162,22 +162,7 @@ const IncidentLog = () => {
             <FaSearch className="input-icon" />
           </div>
 
-          <div className="dispatcher-select-container">
-            <select
-              className="left-select"
-              value={settledTimeFilter}
-              onChange={(e) => setSettledTimeFilter(e.target.value)}
-            >
-              <option value="">Settled Time</option>
-              <option value="Nov 5">Nov 5</option>
-              <option value="Nov 3">Nov 3</option>
-              <option value="Oct 31">Oct 31</option>
-              <option value="Oct 28">Oct 28</option>
-              <option value="Oct 27">Oct 27</option>
-              <option value="Oct 23">Oct 23</option>
-            </select>
-            <FaChevronDown className="select-icon" />
-          </div>
+     
 
           <div className="dispatcher-date-container">
             <DatePicker
