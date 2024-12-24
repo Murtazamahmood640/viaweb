@@ -206,7 +206,7 @@ const AllDrivers = () => {
                   </button>
                   <button
                 className="AD-action-btn"
-                onClick={() => navigate('/driver-management/info')}
+                onClick={() => navigate('dispatchdriver-management/info')}
               >
                 Driver Info
               </button>
@@ -225,7 +225,7 @@ const AllDrivers = () => {
                   </button>
                   <button
                 className="AD-action-btn"
-                onClick={() => navigate('/driver-management/info', { state: { driver } })}
+                onClick={() => navigate('/dispatchdriver-management/info', { state: { driver } })}
               >
                 Driver Info
               </button>

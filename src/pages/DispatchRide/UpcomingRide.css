@@ -40,12 +40,12 @@
   margin-left: 10px;
 }
 
-.filter-container {
+.dis-filter-container {
   display: flex;
   gap: 10px; /* Space between search and dropdown */
   margin-bottom: 20px;
 }
-.common-box {
+.dis-common-box {
   flex: none; /* Prevent automatic flex sizing */
   width: 40%;
   display: flex;
@@ -75,15 +75,8 @@
   background-color: transparent;
 }
 
-.status-dropdown {
+.dis-status-dropdown {
   cursor: pointer; /* Add pointer cursor specifically for dropdown */
-}
-
-
-.dropdown-icon {
-  width: 16px;
-  height: 16px;
-  margin-left: auto; /* Push to the right edge */
 }
 
 
@@ -206,7 +199,7 @@
 .map-container.sidebar-expanded {
   margin-left: 240px;
 }
-.status-select {
+.dis-status-select {
   border: none;
   background: none;
   font-size: 14px;
@@ -214,6 +207,7 @@
   outline: none;
   cursor: pointer;
   flex: 1; /* Ensures it expands properly */
+  padding: 6px 10%;
 }
 .dispatch-buttons {
   position: absolute;
@@ -285,7 +279,7 @@
   z-index: 1000; /* Ensure modal is on top */
 }
 
-.modal-content {
+.up-modal-content {
   background: white;
   padding: 15px;
   border-radius: 8px;
@@ -316,22 +310,22 @@
   z-index: 10; /* Ensure the header stays on top */
 }
 
-.modal-details {
+.up-modal-details {
   margin-top: 10px; /* Ensure space below the modal header */
   margin-bottom: 4px;
 }
 
-.modal-details-info {
+.up-modal-details-info {
   display: flex;
   flex-direction: column;
   gap: 10px; /* Space between rows */
 }
 
-.modal-details-info p {
+.up-modal-details-info p {
   margin: 0;
 }
 
-.modal-details-title {
+.up-modal-details-title {
   color: grey;
   font-weight: bold;
   flex: 1;
@@ -339,7 +333,7 @@
   font-size: 12px;
 }
 
-.modal-details-text {
+.up-modal-details-text {
   color: black;
   flex: 2;
   text-align: left;
@@ -347,7 +341,7 @@
   font-size: 12px;
 }
 
-.modal-details-row {
+.up-modal-details-row {
   display: flex;
   align-items: center;
   width: 100%;
@@ -368,18 +362,18 @@
 }
 
 
-.driver-title{
+.up-driver-title{
   font-size: 14px;
   font-weight: bold;
 }
-.driver-table {
+.up-driver-table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 10px;
 }
 
-.driver-table th,
-.driver-table td {
+.up-driver-table th,
+.up-driver-table td {
   padding: 8px 5px; /* Adjusted padding for spacing without enlarging the table */
   border-bottom: 1px solid #ddd;
   white-space: nowrap; /* Prevents text wrapping */
@@ -387,7 +381,7 @@
   box-sizing: border-box; /* Ensures padding doesn't increase cell size */
 }
 
-.driver-table th {
+.up-driver-table th {
   background-color: white; /* Green background for table headers */
   color: black;
   font-size: 12px;
@@ -395,40 +389,52 @@
   border-color: #ccc;
 }
 
-.driver-table td {
+.up-driver-table td {
   font-size: 12px;
   border: 1px solid;
   border-color: #ccc;
 
 }
 
-.driver-table tr:hover {
+.up-driver-table tr:hover {
   background-color: #f1f1f1; /* Highlight row on hover */
 }
 
 
-.driver-select-text{
+.up-driver-select-text{
   font-size: 14px;
   font-weight: bold;
 
 }
 
-.driver-dropdown {
+.up-driver-dropdown {
   flex-grow: 1;
 }
-.dropdown-select {
-  /* width: 100%; Ensure the dropdown fills its container */
-  padding: 5px 10px;
+
+.up-dropdown-select {
+  width: 40%;
+  padding: 10px;
+  font-size: 13px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 12px;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.up-dropdown-select option {
+  padding: 10px;
   font-size: 13px;
 }
-.modal-footer{
+
+.up-modal-footer{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.dispatch-ride-btn {
+.up-dispatch-ride-btn {
   background: #254e58;
   color: #fff;
   padding: 10px 20px;
@@ -438,7 +444,7 @@
   flex-shrink: 0;
   
 }
-.dispatch-ride-btn:hover {
+.up-dispatch-ride-btn:hover {
   background-color: #88BDBC;
 }
 /* Marker container that includes the icon and the text */

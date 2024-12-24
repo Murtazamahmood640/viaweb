@@ -8,7 +8,7 @@ function BookingDetailsPopup({ booking, onClose }) {
   return (
     <div className="popup-overlay" onClick={onClose}>
       {/* Prevent closing if user clicks inside */}
-      <div className="popup-content" onClick={(e) => e.stopPropagation()}>
+      <div className="booking-popup" onClick={(e) => e.stopPropagation()}>
         
         {/* Top bar */}
         <div className="popup-header">

@@ -82,6 +82,8 @@ p{
   font-size: 13px; 
   font-family: 'Arial', sans-serif; 
   margin-bottom: 1%;
+  display: flex;
+  gap: 50px;
 }
 
 .profile-updated-name, .profile-updated-role{

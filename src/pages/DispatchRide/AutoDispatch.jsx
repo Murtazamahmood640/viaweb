@@ -92,7 +92,7 @@ const AutoDispatch = () => {
       assignedDriver: 'John Doe',
       distanceToPickup: '0.5 miles',
       status: 'Assigned'
-    },
+    }
   ])
 
   // Filter the requests based on the selected status and date
@@ -109,6 +109,11 @@ const AutoDispatch = () => {
     setDatePickerOpen(false) // Close the DatePicker after selecting
   }
 
+  // Function to reset the filters
+  const handleResetFilters = () => {
+    setFilterStatus('All')
+    setFilterDate(null)
+  }
 
   const Marker = ({ text, icon }) => (
     <div className='mapmarker-container'>
@@ -120,7 +125,6 @@ const AutoDispatch = () => {
       <p className='mapmarker-text'>{text}</p>
     </div>
   )
-  
 
   return (
     <div className='autodispatch-screen'>
@@ -306,61 +310,63 @@ const AutoDispatch = () => {
                 onChange={handleFilterByDate}
                 inline
                 className='ad-custom-datepicker'
-                calendarClassName="ad-datepicker" 
+                calendarClassName='ad-datepicker'
               />
             </div>
           )}
+
+          {/* Add Reset Filter Button */}
+          <button className='dis-reset-filter-button' onClick={handleResetFilters}>
+            Reset Filters
+          </button>
         </div>
 
-
         {/* Requests Table */}
-        <div className="ad-requests-table-container">
-        <table className='ad-requests-table'>
-          <thead>
-            <tr>
-              <th>Request ID</th>
-              <th>Passenger Name</th>
-              <th>Pickup Location</th>
-              <th>Drop-off Location</th>
-              <th>Date and Time</th>
-              <th>Assigned Driver</th>
-              <th>Distance to Pickup</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredRequests.map((req, index) => (
-              <tr key={index}>
-                <td>{req.requestId}</td>
-                <td>{req.passengerName}</td>
-                <td>{req.pickupLocation}</td>
-                <td>{req.dropoffLocation}</td>
-                <td>
-                  {req.date},{req.time}
-                </td>
-                <td>{req.assignedDriver}</td>
-                <td>{req.distanceToPickup}</td>
-                <td>
-                  <span className={`ad-status-badge ${req.status.toLowerCase()}`}>
-                    {req.status}
-                  </span>
-                </td>
-                <td>
-                  {req.status === 'Assigned' || req.status === 'Accepted' ? (
-                    <p
-                      className='ad-view-details'
-                    >
-                      View Details
-                    </p>
-                  ) : (
-                    <p className='ad-override'>Override</p>
-                  )}
-                </td>
+        <div className='ad-requests-table-container'>
+          <table className='ad-requests-table'>
+            <thead>
+              <tr>
+                <th>Request ID</th>
+                <th>Passenger Name</th>
+                <th>Pickup Location</th>
+                <th>Drop-off Location</th>
+                <th>Date and Time</th>
+                <th>Assigned Driver</th>
+                <th>Distance to Pickup</th>
+                <th>Status</th>
+                <th>Action</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {filteredRequests.map((req, index) => (
+                <tr key={index}>
+                  <td>{req.requestId}</td>
+                  <td>{req.passengerName}</td>
+                  <td>{req.pickupLocation}</td>
+                  <td>{req.dropoffLocation}</td>
+                  <td>
+                    {req.date},{req.time}
+                  </td>
+                  <td>{req.assignedDriver}</td>
+                  <td>{req.distanceToPickup}</td>
+                  <td>
+                    <span
+                      className={`ad-status-badge ${req.status.toLowerCase()}`}
+                    >
+                      {req.status}
+                    </span>
+                  </td>
+                  <td>
+                    {req.status === 'Assigned' || req.status === 'Accepted' ? (
+                      <p className='ad-view-details'>View Details</p>
+                    ) : (
+                      <p className='ad-override'>Override</p>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

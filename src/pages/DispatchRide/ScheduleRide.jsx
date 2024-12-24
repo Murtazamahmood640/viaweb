@@ -156,6 +156,12 @@ const ScheduleRide = () => {
     setSchDatePickerOpen(false) // Close the DatePicker after selecting
   }
 
+    // Function to reset the filters
+    const handleResetFilters = () => {
+      setSchFilterStatus('All')
+      setSchFilterDate(null)
+    }
+
 
 
   const Marker = ({ text, icon }) => (
@@ -354,6 +360,11 @@ const ScheduleRide = () => {
               />
             </div>
           )}
+
+          {/* Add Reset Filter Button */}
+          <button className='dis-reset-filter-button' onClick={handleResetFilters}>
+            Reset Filters
+          </button>
         </div>
 
         {/* Requests Table */}

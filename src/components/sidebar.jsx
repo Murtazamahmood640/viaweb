@@ -212,89 +212,21 @@ const Sidebar = ({
 
 
 {/* dispatchdriver Management */}
-<li>
-          <div
-            onClick={() => handleMenuClick("dispatchdriver-management")}
-            className={`menu-heading ${
-              activeMenu === "dispatchdriver-management" ? "active" : ""
-            }`}
-          >
-            <div className="left-content">
-              <RiUser6Fill />{" "}
-              <span>{isCollapsed ? "" : "Dispatch Driver Management"}</span>
-            </div>
-            <div className="right-content">
-              {activeMenu === "dispatchdriver-management" ? (
-                <img
-                  src={dropdownIcon}
-                  alt="Dropdown Up"
-                  className="dropdown-icon"
-                />
-              ) : (
-                <img
-                  src={dropdownIcon}
-                  alt="Dropdown Down"
-                  className="dropdown-icon"
-                />
-              )}
-            </div>
-          </div>
-          {activeMenu === "dispatchdriver-management" && !isCollapsed && (
-        <ul className="dropdown">
-          <li>
-            <Link to="/dispatchdriver-management/all">
-              <FaUsers /> {/* Icon for All Drivers */}
-              <span>All Drivers</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/dispatchdriver-management/info">
-              <IoInformationCircleOutline /> {/* Icon for Driver Info */}
-              <span>Driver Info</span>
-            </Link>
-          </li>
-        </ul>
-      )}
+
+<li className="links">
+          <Link to="/dispatchdriver-management/all">
+            <IoMdPerson /> <span>{isCollapsed ? "" : "Dispatch Driver Management "}</span>
+          </Link>
         </li>
 
+
         {/* Bookings */}
-        <li>
-          <div
-            onClick={() => handleMenuClick("bookings")}
-            className={`menu-heading ${
-              activeMenu === "bookings" ? "active" : ""
-            }`}
-          >
-            <div className="left-content">
-              <FaCalendarAlt /> <span>{isCollapsed ? "" : "Bookings"}</span>
-            </div>
-            <div className="right-content">
-              {activeMenu === "bookings" ? (
-                <img
-                  src={dropdownIcon}
-                  alt="Dropdown Up"
-                  className="dropdown-icon"
-                />
-              ) : (
-                <img
-                  src={dropdownIcon}
-                  alt="Dropdown Down"
-                  className="dropdown-icon"
-                />
-              )}
-            </div>
-          </div>
-          {activeMenu === "bookings" && !isCollapsed && (
-            <ul className="dropdown">
-              <li>
-                <Link to="/bookings/booking">
-                  <FaClipboardList /> {/* Icon for Booking */}
-                  <span>Booking</span>
-                </Link>
-              </li>
-            </ul>
-          )}
+        <li className="links">
+          <Link to="/bookings/booking">
+            <FaCalendarAlt /> <span>{isCollapsed ? "" : "Bookings "}</span>
+          </Link>
         </li>
+   
 
         {/* SOS Alerts */}
         <li>

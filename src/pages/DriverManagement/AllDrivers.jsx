@@ -21,7 +21,7 @@ const Drivers = () => {
 
   const navigate = useNavigate(); // React Router hook for navigation
   const openDriverDetails = () => {
-    navigate('/driver-management/details');
+    navigate('/drivermanagement/details');
   };
 
   const [drivers, setDrivers] = useState([
@@ -124,7 +124,7 @@ const Drivers = () => {
 
   return (
     <div className="user-management">
-      <h2 className="page-title">Drivers</h2>
+      <h2 className="page-title">All Drivers</h2>
 
       <div className="filters">
   <div className="left">

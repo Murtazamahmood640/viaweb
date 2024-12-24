@@ -70,6 +70,13 @@ const RideCancellation = () => {
     setRcDatePickerOpen(false)
   }
 
+  // Function to reset the filters
+  const handleResetFilters = () => {
+    setRcSelectedStatus('All')
+    setRcFilterDate(null)
+    setRcSearchText('');    
+  }
+
   const rideData = [
     {
       tripId: 'VIA#366',
@@ -171,6 +178,21 @@ const RideCancellation = () => {
     <div className='ride-cancellation'>
       <div className='rc-header'>
         <p className='rc-title'>Ride Cancellation</p>
+
+        <div className='rc-legend'>
+          <div className='rc-legend-colorcode'>
+            <p>Completed</p>
+          </div>
+          <div className='rc-legend-colorcode'>
+            <p>Pending</p>
+          </div>
+          <div className='rc-legend-colorcode'>
+            <p>Reassigned</p>
+          </div>
+          <div className='rc-legend-colorcode'>
+            <p>Not Available</p>
+          </div>
+        </div>
       </div>
 
       <div className='rc-filter-container'>
@@ -224,21 +246,10 @@ const RideCancellation = () => {
             </div>
           )}
         </div>
-
-        <div className='rc-legend'>
-          <div className='rc-legend-colorcode'>
-            <p>Completed</p>
-          </div>
-          <div className='rc-legend-colorcode'>
-            <p>Pending</p>
-          </div>
-          <div className='rc-legend-colorcode'>
-            <p>Reassigned</p>
-          </div>
-          <div className='rc-legend-colorcode'>
-            <p>Not Available</p>
-          </div>
-        </div>
+        {/* Add Reset Filter Button */}
+        <button className='rc-reset-filter-button' onClick={handleResetFilters}>
+          Reset Filters
+        </button>
       </div>
 
       <div className='rc-requests-table-container'>

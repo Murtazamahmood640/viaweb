@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./AdminEdit.css";
+import profile from "../../Assets/SidebarDropdownIcons/user.png"
 
 const EditProfile = () => {
   const [formData, setFormData] = useState({
@@ -121,7 +122,7 @@ const EditProfile = () => {
             </section>
             <section className="edit-image">
               <img
-                src="https://via.placeholder.com/100" // Replace with actual profile image URL
+                src= {profile} // Replace with actual profile image URL
                 alt="Profile"
               />
               <p style={{color:'#254E58',}}>

@@ -60,21 +60,7 @@ const LanguageSettings = () => {
         <h2>System Default Languages</h2>
         <p>
           Here you select a default language for your full system
-          <select
-            value={defaultLanguage}
-            onChange={handleLanguageChange}
-            className="select-language"
-            style={{
-              width: "220px",
-              marginBottom: "0px",
-            }}
-          >
-            {languages.map((lang, index) => (
-              <option key={index} value={lang.name}>
-                {lang.name}
-              </option>
-            ))}
-          </select>
+         
         </p>
       </div>
 

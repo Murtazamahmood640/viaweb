@@ -10,22 +10,27 @@ const PriceModel = () => {
   const [showNewKmRangeModal, setShowNewKmRangeModal] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [showThankYou, setShowThankYou] = useState(false);
+  const [activeModal, setActiveModal] = useState(null); // To track the active modal
 
   const openNewVehicleModal = () => {
-    setShowNewVehicleModal(true);
+    setActiveModal("newVehicle");
   };
 
   const closeNewVehicleModal = () => {
-    setShowNewVehicleModal(false);
+    if (activeModal === "newVehicle") {
+      setActiveModal(null);
+    }
     setSelectedFile(null);
   };
 
   const openNewKmRangeModal = () => {
-    setShowNewKmRangeModal(true);
+    setActiveModal("newKmRange");
   };
 
   const closeNewKmRangeModal = () => {
-    setShowNewKmRangeModal(false);
+    if (activeModal === "newKmRange") {
+      setActiveModal(null);
+    }
   };
 
   const handleFileChange = (e) => {
@@ -39,17 +44,12 @@ const PriceModel = () => {
   };
 
   const handleSubmit = () => {
-    setShowThankYou(true);
+    setActiveModal(null);
+    window.location.reload();
   };
 
   const handleKmRangeSubmit = () => {
-    setShowNewKmRangeModal(false);
-    setShowThankYou(true);
-  };
-
-  const handleThankYouOK = () => {
-    setShowThankYou(false);
-    closeNewVehicleModal();
+    setActiveModal(null);
     window.location.reload();
   };
 
@@ -173,7 +173,8 @@ const PriceModel = () => {
         </div>
       </div>
 
-      {showNewVehicleModal && (
+      {/* New Vehicle Modal */}
+      {activeModal === "newVehicle" && (
         <div className="modalOverlay">
           <div className="modalContent">
             <div className="modalHeader">
@@ -218,7 +219,10 @@ const PriceModel = () => {
               <button className="modalButton" onClick={handleSubmit}>
                 Submit
               </button>
-              <button className="modalButtoncancel" onClick={closeNewVehicleModal}>
+              <button
+                className="modalButton cancel"
+                onClick={closeNewVehicleModal}
+              >
                 Cancel
               </button>
             </div>
@@ -226,7 +230,8 @@ const PriceModel = () => {
         </div>
       )}
 
-      {showNewKmRangeModal && (
+      {/* New KM Range Modal */}
+      {activeModal === "newKmRange" && (
         <div className="modalOverlay">
           <div className="modalContent">
             <div className="modalHeader">
@@ -239,41 +244,30 @@ const PriceModel = () => {
             <div className="modalBody">
               <div className="modalInputGroup">
                 <label>Start KM</label>
-                <input type="number" placeholder="Enter start KM" />
+                <input
+                  type="number"
+                  className="modalInput"
+                  placeholder="Enter start KM"
+                />
               </div>
               <div className="modalInputGroup">
                 <label>End KM</label>
-                <input type="number" placeholder="Enter end KM" />
+                <input
+                  type="number"
+                  className="modalInput"
+                  placeholder="Enter end KM"
+                />
               </div>
             </div>
             <div className="modalFooter">
               <button className="modalButton" onClick={handleKmRangeSubmit}>
                 Submit
               </button>
-              <button className="modalButton cancel" onClick={closeNewKmRangeModal}>
+              <button
+                className="modalButton cancel"
+                onClick={closeNewKmRangeModal}
+              >
                 Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {showThankYou && (
-        <div className="modalOverlay">
-          <div className="modalContent">
-            <div className="modalHeader">
-              <h4>Thank You!</h4>
-              <button className="closeButton" onClick={() => setShowThankYou(false)}>
-                X
-              </button>
-            </div>
-            <hr />
-            <div className="modalBody">
-              <p>Your data has been saved successfully!</p>
-            </div>
-            <div className="modalFooter">
-              <button className="modalButton" onClick={handleThankYouOK}>
-                OK
               </button>
             </div>
           </div>

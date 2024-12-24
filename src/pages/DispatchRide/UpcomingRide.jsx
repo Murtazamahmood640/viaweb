@@ -118,9 +118,9 @@ const UpcomingRide = () => {
       <div className='main-content-container'>
         <div className='upcoming-rides-container'>
           {/* Filter and Search */}
-          <div className='filter-container'>
+          <div className='dis-filter-container'>
             {/* Search Box */}
-            <div className='dissearch-box common-box'>
+            <div className='dissearch-box dis-common-box'>
               <img src={search} alt='Search' className='dissearch-icon' />
               <input
                 type='text'
@@ -132,9 +132,9 @@ const UpcomingRide = () => {
             </div>
 
             {/* Status Dropdown */}
-            <div className='status-dropdown common-box'>
+            <div className='dis-status-dropdown dis-common-box'>
               <select
-                className='status-select'
+                className='dis-status-select'
                 value={filterStatus}
                 onChange={e => setFilterStatus(e.target.value)}
               >
@@ -237,7 +237,7 @@ const UpcomingRide = () => {
         {/* Modal */}
         {isModalVisible && (
           <div className='dispatch-modal'>
-            <div className='modal-content'>
+            <div className='up-modal-content'>
               <div className='dispatch-modal-header'>
                 <h4 className='dispatch-modal-title'>Dispatch Details</h4>
                 <button
@@ -248,48 +248,48 @@ const UpcomingRide = () => {
                 </button>
               </div>
 
-              <div className='modal-details'>
-                <div className='modal-details-info'>
-                  <div className='modal-details-row'>
-                    <p className='modal-details-title'>Trip ID:</p>
-                    <p className='modal-details-text'>VIA#747</p>
+              <div className='up-modal-details'>
+                <div className='up-modal-details-info'>
+                  <div className='up-modal-details-row'>
+                    <p className='up-modal-details-title'>Trip ID:</p>
+                    <p className='up-modal-details-text'>VIA#747</p>
                   </div>
 
-                  <div className='modal-details-row'>
-                    <p className='modal-details-title'>Passenger Name:</p>
-                    <p className='modal-details-text'>Hamza Ahmed</p>
+                  <div className='up-modal-details-row'>
+                    <p className='up-modal-details-title'>Passenger Name:</p>
+                    <p className='up-modal-details-text'>Hamza Ahmed</p>
                   </div>
 
-                  <div className='modal-details-row'>
-                    <p className='modal-details-title'>Contact No:</p>
-                    <p className='modal-details-text'>+92 33537465387</p>
+                  <div className='up-modal-details-row'>
+                    <p className='up-modal-details-title'>Contact No:</p>
+                    <p className='up-modal-details-text'>+92 33537465387</p>
                   </div>
 
-                  <div className='modal-details-row'>
-                    <p className='modal-details-title'>Pickup Location:</p>
-                    <p className='modal-details-text'>
+                  <div className='up-modal-details-row'>
+                    <p className='up-modal-details-title'>Pickup Location:</p>
+                    <p className='up-modal-details-text'>
                       Plot No 364 - DHA Phase 2 - Karachi
                     </p>
                   </div>
 
-                  <div className='modal-details-row'>
-                    <p className='modal-details-title'>Dropoff Location:</p>
-                    <p className='modal-details-text'>
+                  <div className='up-modal-details-row'>
+                    <p className='up-modal-details-title'>Dropoff Location:</p>
+                    <p className='up-modal-details-text'>
                       New University - Clifton - Karachi
                     </p>
                   </div>
 
-                  <div className='modal-details-row'>
-                    <p className='modal-details-title'>Request Time:</p>
-                    <p className='modal-details-text'>01:30 PM</p>
+                  <div className='up-modal-details-row'>
+                    <p className='up-modal-details-title'>Request Time:</p>
+                    <p className='up-modal-details-text'>01:30 PM</p>
                   </div>
                 </div>
               </div>
 
-              <p className='driver-title'>Available Drivers</p>
+              <p className='up-driver-title'>Available Drivers</p>
 
               {/* Driver Table */}
-              <table className='driver-table'>
+              <table className='up-driver-table'>
                 <thead>
                   <tr>
                     <th>Driver ID</th>
@@ -335,11 +335,11 @@ const UpcomingRide = () => {
 
               {/* Driver Dropdown */}
 
-              <p className='driver-select-text'>Select Driver:</p>
-              <div className='modal-footer'>
-                <div className='driver-dropdown'>
+              <p className='up-driver-select-text'>Select Driver:</p>
+              <div className='up-modal-footer'>
+                <div className='up-driver-dropdown'>
                   <select
-                    className='dropdown-select'
+                    className='up-dropdown-select'
                     id='driver-select'
                     value={selectedDriverId}
                     onChange={e => setSelectedDriverId(e.target.value)}
@@ -353,7 +353,7 @@ const UpcomingRide = () => {
                   </select>
                 </div>
 
-                <button className='dispatch-ride-btn'>Dispatch Ride</button>
+                <button className='up-dispatch-ride-btn'>Dispatch Ride</button>
               </div>
             </div>
           </div>

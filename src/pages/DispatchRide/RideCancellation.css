@@ -3,6 +3,12 @@
 }
 
 .rc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  position: relative;
+
 }
 
 .rc-title {
@@ -213,7 +219,7 @@
 }
 
 .rc-notify-passenger {
-  color: #254e58;
+  color: black;
   font-weight: bold;
   cursor: default;
   font-size: 12px;
@@ -412,11 +418,22 @@
 
 
 .rc-dropdown-select {
-  padding: 5px 10px;
+  width: 100%;
+  padding: 10px;
+  font-size: 13px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 12px;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rc-dropdown-select option {
+  padding: 10px;
   font-size: 13px;
 }
+
 .rc-modal-footer{
     display: flex;
     justify-content: space-between;
@@ -450,4 +467,21 @@
   margin-bottom: 10px;
   font-weight: 500;
 
+}
+.rc-reset-filter-button {
+  margin-left: auto; /* Push the button to the far right */
+  padding: 10px 20px;
+  background-color: #254e58;
+  cursor: pointer;
+  font-size: 14px;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+}
+
+.rc-reset-filter-button:hover {
+  background-color: #88bdbc;
 }

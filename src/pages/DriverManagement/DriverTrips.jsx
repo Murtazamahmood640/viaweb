@@ -16,7 +16,7 @@ const DriverTrips = () => {
       const handleTabClick = (tabName) => {
         setActiveTab(tabName);
         if (tabName === "car-details") {
-          navigate("/driver-management/detailsViewMore");
+          navigate("/drivermanagement/viewMore");
         }
       };
   
@@ -134,7 +134,7 @@ const DriverTrips = () => {
     <div className="driverdetails-content">
       <main className="driverdetails-main">
         <div className="header-container">
-          <h3>Drivers Details / View More</h3>
+          <h3>Drivers Trips</h3>
           <div className="tabs-container" style={{ display: "flex" }}>
     <button
       className={`tab-button ${activeTab === "car-details" ? "active" : ""}`}

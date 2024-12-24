@@ -330,3 +330,22 @@
   width: 15px; /* Reduced size for Pickup icon */
   height: 15px; /* Adjust according to the icon size */
 }
+.dis-reset-filter-button {
+  margin-left: auto; /* Push the button to the far right */
+  padding: 10px 20px;
+  background-color: #254e58;
+  cursor: pointer;
+  font-size: 14px;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+}
+
+.dis-reset-filter-button:hover {
+  background-color: #88bdbc;
+}
+
+

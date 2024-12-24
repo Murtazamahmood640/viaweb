@@ -344,9 +344,8 @@
   font-weight: bold;
 }
 
-.leaflet-container {
+.leaflet1-container {
   width: 80%; /* Reduce the width of the map */
-  max-width: 440px; /* Optional: Set a maximum width for responsiveness */
   height: 255px;
   border-radius: 8px;
   margin: 0 auto; /* Center the map horizontally */

@@ -2,7 +2,7 @@ import React from "react";
 import "./AdminProfile.css";
 import { Link } from 'react-router-dom';
 import { useLocation } from "react-router-dom";
-
+import profile from "../../Assets/SidebarDropdownIcons/user.png"
 const Profile  = () => {
   const location = useLocation();
   const updatedData = location.state?.updatedData || {
@@ -49,7 +49,7 @@ const Profile  = () => {
             </section>
             
             <section className="edit-image">
-              <img src="https://via.placeholder.com/100" alt="Profile" />
+              <img src= {profile} alt="Profile" />
             </section>
           </div>
         </main>

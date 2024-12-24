@@ -174,12 +174,11 @@
   justify-content: center;
   align-items: center; 
   z-index: 9999;
-  padding: 60px 0;
 }
 
-/* .popup-content {
+.booking-popup {
   background: #fff;
-  width: 360px;
+  width: 30%;
   max-width: 90%;
   border-radius: 10px;
   padding: 20px;
@@ -187,7 +186,7 @@
 
   max-height: calc(100vh - 120px);
   overflow-y: auto;
-} */
+}
 
 .popup-header {
   display: flex;
@@ -228,6 +227,7 @@
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 12px;
+  margin-top: 12px;
 }
 
 .detail-grid-3col {
@@ -275,7 +275,6 @@
 .ok-btn-container {
   display: flex;
   justify-content: flex-end;
-  margin-top: 20px;
 }
 
 .ok-btn {
