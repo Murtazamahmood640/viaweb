@@ -606,7 +606,6 @@ margin-top: 10px; /* Space between image and text */
 font-size: 12px; /* Consistent font size */
 font-weight: 600;
 color: #333;
-white-space: nowrap; /* Prevent line breaks */
 }
 .popup-actions-buttons {
 display: flex;
@@ -940,7 +939,9 @@ padding: 20px 0;
   .date-container {
     width: 28%;
   }
- 
+ .sample-popup{
+  width: 28%;
+ }
   .reset-btn {
     text-align: center;
   }
@@ -963,6 +964,9 @@ padding: 20px 0;
     padding: 0 24px;
     width: 29%;
   }
+  .sample-popup{
+    width: 32%;
+   }
   .delete-popup {
     padding: 0 24px;
     width: 25%;
@@ -1017,6 +1021,9 @@ padding: 20px 0;
   margin-bottom: 20px;
   table-layout:auto /* Prevent layout issues */
 }
+.sample-popup{
+  width: 35%;
+ }
   .filters {
     flex-wrap: wrap;
     gap: 15px;
