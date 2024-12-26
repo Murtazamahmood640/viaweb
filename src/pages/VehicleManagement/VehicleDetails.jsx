@@ -238,6 +238,8 @@ const closeDeclinePopup = () => {
   </div>
   <div className="document-item-popup">
     <img src={CNIC} alt="CNIC" />
+    <p>CNIC </p>
+
   </div>
 </div>
       {/* New Heading */}
