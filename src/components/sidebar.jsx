@@ -440,8 +440,12 @@ const Sidebar = ({
           <Link to="/Profile/AdminProfile">
             <FaUserCircle /> <span>{isCollapsed ? "" : "Profile"}</span>
           </Link>
+          
           <Link to="/Settings/LanguageSettings">
-            <SlSettings /> <span>{isCollapsed ? "" : "Settings"}</span>
+            <SlSettings /> <span>{isCollapsed ? "" : "System Settings"}</span>
+          </Link>
+          <Link to="/Settings/SecurityScreen">
+            <SlSettings /> <span>{isCollapsed ? "" : "Security Settings"}</span>
           </Link>
         </div>
       </ul>

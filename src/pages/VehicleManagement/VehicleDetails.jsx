@@ -82,7 +82,7 @@ const closeDeclinePopup = () => {
 
   return (
     <div className="user-management">
-      <h2 className="page-title">Drivers Requests</h2>
+      <h2 className="page-title">Vehicle Requests</h2>
  
       <div className="filters">
         <div className="left">

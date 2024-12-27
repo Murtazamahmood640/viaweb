@@ -12,6 +12,7 @@ const NotSupported = () => {
         textAlign: "center",
         backgroundColor: "#f8f8f8",
         color: "#333",
+        
       }}
     >
       <h1>App Not Supported on Mobile</h1>

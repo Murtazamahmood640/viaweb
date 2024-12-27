@@ -119,7 +119,7 @@ const VehicleAvailability = () => {
 
   return (
     <div className="user-management">
-      <h2 className="page-title">Drivers</h2>
+      <h2 className="page-title">Vehicles Availability </h2>
  
       <div className="filters">
   <div className="left">

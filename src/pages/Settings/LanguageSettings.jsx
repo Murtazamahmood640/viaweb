@@ -52,6 +52,7 @@ const LanguageSettings = () => {
           <Link to="/Settings/AppearanceSettings">
             <button>Appearance</button>
           </Link>
+        
         </nav>
       </div>
 
