@@ -8,7 +8,7 @@ import {
   FaCalendarAlt,
   FaUserPlus,
 } from "react-icons/fa";
-import { MdAirlineSeatReclineNormal } from "react-icons/md"; // Passenger
+import { MdAirlineSeatReclineNormal , MdOutlineSecurity } from "react-icons/md"; // Passenger
 import { GiSteeringWheel } from "react-icons/gi"; // Driver
 import { BiSupport } from "react-icons/bi"; // Dispatcher
 import { MdAttachMoney } from "react-icons/md"; // Accountant
@@ -445,7 +445,7 @@ const Sidebar = ({
             <SlSettings /> <span>{isCollapsed ? "" : "System Settings"}</span>
           </Link>
           <Link to="/Settings/SecurityScreen">
-            <SlSettings /> <span>{isCollapsed ? "" : "Security Settings"}</span>
+            <MdOutlineSecurity /> <span>{isCollapsed ? "" : "Security Settings"}</span>
           </Link>
         </div>
       </ul>
